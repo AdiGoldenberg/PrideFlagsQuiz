@@ -526,7 +526,6 @@
                                 android:id="@+id/rainbow_ans1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
                                 android:paddingLeft="@dimen/margin_between_answers"
                                 android:text="@string/rainbow_flag_a1"
                                 android:textSize="@dimen/answers_text_size" />
@@ -535,7 +534,7 @@
                                 android:id="@+id/rainbow_ans2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
+                                android:layout_marginTop="@dimen/margin_between_checkboxs_land"
                                 android:paddingLeft="@dimen/margin_between_answers"
                                 android:text="@string/rainbow_flag_a2"
                                 android:textSize="@dimen/answers_text_size" />
@@ -544,7 +543,7 @@
                                 android:id="@+id/rainbow_ans3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
+                                android:layout_marginTop="@dimen/margin_between_checkboxs_land"
                                 android:paddingLeft="@dimen/margin_between_answers"
                                 android:text="@string/rainbow_flag_a3"
                                 android:textSize="@dimen/answers_text_size" />
@@ -553,7 +552,7 @@
                                 android:id="@+id/rainbow_ans4"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
+                                android:layout_marginTop="@dimen/margin_between_checkboxs_land"
                                 android:paddingLeft="@dimen/margin_between_answers"
                                 android:text="@string/rainbow_flag_a4"
                                 android:textSize="@dimen/answers_text_size" />
@@ -562,7 +561,7 @@
                                 android:id="@+id/rainbow_ans5"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
+                                android:layout_marginTop="@dimen/margin_between_checkboxs_land"
                                 android:paddingLeft="@dimen/margin_between_answers"
                                 android:text="@string/rainbow_flag_a5"
                                 android:textSize="@dimen/answers_text_size" />
@@ -571,7 +570,7 @@
                                 android:id="@+id/rainbow_ans6"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
+                                android:layout_marginTop="@dimen/margin_between_checkboxs_land"
                                 android:paddingLeft="@dimen/margin_between_answers"
                                 android:text="@string/rainbow_flag_a6"
                                 android:textSize="@dimen/answers_text_size" />
