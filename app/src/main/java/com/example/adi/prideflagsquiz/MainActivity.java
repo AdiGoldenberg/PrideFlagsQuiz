@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             R.id.trans_group};
     int[] radioGroupAns = {R.id.asexual_ans, R.id.bisexual_ans, R.id.poly_ans, R.id.genderqueer_ans,
             R.id.trans_ans};
-    //
+    // creating a variable to maintain the enable state of the views in case the answers were submitted
     boolean isSumbited = false;
 
     @Override
