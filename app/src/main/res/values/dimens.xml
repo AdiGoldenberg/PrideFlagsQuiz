@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="padding">16dp</dimen>
+    <dimen name="button_padding">8dp</dimen>
     <dimen name="margin_between_questions">16dp</dimen>
     <dimen name="margin_between_answers">8dp</dimen>
     <dimen name="questions_text_size">24sp</dimen>
@@ -8,4 +9,5 @@
     <dimen name="question_separetor_height">4dp</dimen>
     <dimen name="question_image_height">200dp</dimen>
     <dimen name="first_image_height">300dp</dimen>
+    <dimen name="corners_radius">20dp</dimen>
 </resources>

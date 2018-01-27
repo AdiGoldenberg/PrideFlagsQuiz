@@ -1,6 +1,8 @@
 package com.example.adi.prideflagsquiz;
 
+import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.PersistableBundle;
@@ -12,8 +14,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatRadioButton;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
@@ -38,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
             R.id.trans_group};
     int[] radioGroupAns = {R.id.asexual_ans, R.id.bisexual_ans, R.id.poly_ans, R.id.genderqueer_ans,
             R.id.trans_ans};
+    //
+    boolean isSumbited = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,22 +60,62 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        // saving the position in the scroll view
         ScrollView mScrollView = (ScrollView) findViewById(R.id.questionsView);
-        outState.putIntArray("ARTICLE_SCROLL_POSITION",
-                new int[]{mScrollView.getScrollX(), mScrollView.getScrollY()});
+        int text = mScrollView.getChildAt(0).getHeight();
+        if (text != 0){
+            outState.putInt("layoutHeight", mScrollView.getChildAt(0).getHeight());
+            outState.putIntArray("SCROLL_POSITION",
+                    new int[]{mScrollView.getScrollX(), mScrollView.getScrollY()});
+        }
+        // saving the visibility status of my 2 layouts (opening and questions)
+        outState.putIntArray("layouts_visibility",
+                new int[]{getVisibility(R.id.openingView), getVisibility(R.id.questionsView)});
+        // saving the isSumbited value
+        outState.putBoolean("isSubmited",isSumbited);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        final ScrollView mScrollView = (ScrollView) findViewById(R.id.questionsView);
-        final int[] position = savedInstanceState.getIntArray("ARTICLE_SCROLL_POSITION");
-        if (position != null)
+        final int[] position = savedInstanceState.getIntArray("SCROLL_POSITION");
+        if (position != null) {
+            // reposition location in the scrollView
+            final ScrollView mScrollView = (ScrollView) findViewById(R.id.questionsView);
+            final int oldHeight = savedInstanceState.getInt("layoutHeight");
             mScrollView.post(new Runnable() {
                 public void run() {
-                    mScrollView.scrollTo(position[0], position[1]);
+                    int layoutHeight = mScrollView.getChildAt(0).getHeight();
+                    int yPosition = position[1] * layoutHeight / oldHeight;
+                    mScrollView.scrollTo(position[0], yPosition);
                 }
             });
+            // restoring the opening and the question layouts visibilities
+            int[] visibilities = savedInstanceState.getIntArray("layouts_visibility");
+            setVisibility(R.id.openingView, visibilities[0]);
+            setVisibility(R.id.questionsView, visibilities[1]);
+        }
+        // reverting to the state after submition in case isSubmited is true
+        boolean savedIsSumbited = savedInstanceState.getBoolean("isSubmited");
+        if (savedIsSumbited) {
+            goOverAnswers();
+            isSumbited = true;
+        }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        View view = getCurrentFocus();
+        if (view != null && (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_MOVE) && view instanceof EditText && !view.getClass().getName().startsWith("android.webkit.")) {
+            int scrcoords[] = new int[2];
+            view.getLocationOnScreen(scrcoords);
+            float x = ev.getRawX() + view.getLeft() - scrcoords[0];
+            float y = ev.getRawY() + view.getTop() - scrcoords[1];
+            if (x < view.getLeft() || x > view.getRight() || y < view.getTop() || y > view.getBottom())
+                ((InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow((this.getWindow().getDecorView().getApplicationWindowToken()), 0);
+            view.clearFocus();
+        }
+        return super.dispatchTouchEvent(ev);
     }
 
     // Options for the intersex identity type question
@@ -91,6 +137,33 @@ public class MainActivity extends AppCompatActivity {
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void checkAnswers(View view) {
+        int score = goOverAnswers();
+        // Give feedback
+        //Get name and lock it's editText view from changing
+        EditText nameView = (EditText) findViewById(R.id.name);
+        String name = nameView.getText().toString();
+        nameView.setEnabled(false);
+        // Device message according to score
+        String message = "";
+        if (score == 7) {
+            message = "Excellent job " + name + "!";
+        } else if (score >= 5) {
+            message = "Nice job " + name + ", but there's still room for improvement.";
+        } else {
+            message = "You better brush up on your LGBT flags " + name + ".";
+        }
+        Toast.makeText(this, message + "\nYou got " + score + "/7 answers right.", Toast.LENGTH_LONG).show();
+        // scroll to the top of the scrollView
+        ScrollView scrollView = (ScrollView) findViewById(R.id.questionsView);
+        scrollView.scrollTo(0, 0);
+        // Change the isSubmited variable to true
+        isSumbited = true;
+    }
+
+    /**
+     *
+     */
+    public int goOverAnswers(){
         int score = 0;
         // Check radioBox questions
         for (int i = 0; i <= 4; i++) {
@@ -120,24 +193,8 @@ public class MainActivity extends AppCompatActivity {
         }
         //Lock the radioBoxes and checkBoxes
         enableChanges(false);
-        // Give feedback
-        //Get name and lock it's editText view from changing
-        EditText nameView = (EditText) findViewById(R.id.name);
-        String name = nameView.getText().toString();
-        nameView.setEnabled(false);
-        // Device message according to score
-        String message = "";
-        if (score == 7) {
-            message = "Excellent job " + name + "!";
-        } else if (score >= 5) {
-            message = "Nice job " + name + ", but there's still room for improvement.";
-        } else {
-            message = "You better brush up on your LGBT flags " + name + ".";
-        }
-        Toast.makeText(this, message + "\nYou got " + score + "/7 answers right.", Toast.LENGTH_LONG).show();
-        // scroll to the top of the scrollView
-        ScrollView scrollView = (ScrollView) findViewById(R.id.questionsView);
-        scrollView.scrollTo(0, 0);
+
+        return score;
     }
 
     /**
@@ -181,11 +238,15 @@ public class MainActivity extends AppCompatActivity {
         }
         // unlock the app
         enableChanges(true);
-        //ScrollView scrollView = (ScrollView) findViewById(R.id.questionsView);
-        //scrollView.scrollTo(0, 0);
+        // scroll back up to the top of the question scrollView
+        ScrollView scrollView = (ScrollView) findViewById(R.id.questionsView);
+        scrollView.scrollTo(0, 0);
         // go back to only showing the openingView and not the questionsView
         setVisibility(R.id.openingView, View.VISIBLE);
         setVisibility(R.id.questionsView, View.GONE);
+        // Change the isSubmited variable to false
+        isSumbited = false;
+
     }
 
     /**
@@ -216,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Turns on the visibility of a text view
+     * Turns on/off the visibility of a text view
      *
      * @param viewID is the R.id.textViewId
      * @param visibility should either be View.VISIBLE or View.GONE
@@ -224,6 +285,17 @@ public class MainActivity extends AppCompatActivity {
     public void setVisibility(int viewID, int visibility) {
         View view = (View) findViewById(viewID);
         view.setVisibility(visibility);
+    }
+
+    /**
+     * Gets the visibility of a text view
+     *
+     * @param viewID is the R.id.textViewId
+     * @return an int representing the visibility state of the view (either equals to View.VISIBLE or View.GONE)
+     */
+    public int getVisibility(int viewID) {
+        View view = (View) findViewById(viewID);
+        return view.getVisibility();
     }
 
     /**
@@ -267,7 +339,7 @@ public class MainActivity extends AppCompatActivity {
      * @return ColorStateList
      */
     public void stainBottun(int colorResource, CompoundButton compoundButton) {
-        stainBottun(colorResource, R.color.textDefault, compoundButton);
+        stainBottun(colorResource, R.color.compoundButtonsDefault, compoundButton);
     }
 
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- background color -->
+    <solid android:color="@color/layoutBackground" />
+
+    <!-- add some padding for text inside -->
+    <padding
+        android:top="@dimen/padding"
+        android:bottom="@dimen/padding"
+        android:left="@dimen/padding"
+        android:right="@dimen/padding"/>
+
+    <!-- we define corner radius, note that radius can be different for each corner -->
+    <corners android:radius="@dimen/corners_radius" />
+
+</shape>
