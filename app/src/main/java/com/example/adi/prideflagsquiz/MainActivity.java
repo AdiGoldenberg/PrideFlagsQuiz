@@ -49,8 +49,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         // Create an answer options array for the intersex question
+        String[] identityTypes = new String[]{
+                getResources().getString(R.string.intersex_flag_a1),
+                getResources().getString(R.string.intersex_flag_a2)};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, identityTypes);
         AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.intersex_ans);
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         // saving the position in the scroll view
         ScrollView mScrollView = (ScrollView) findViewById(R.id.questionsView);
         int text = mScrollView.getChildAt(0).getHeight();
-        if (text != 0){
+        if (text != 0) {
             outState.putInt("layoutHeight", mScrollView.getChildAt(0).getHeight());
             outState.putIntArray("SCROLL_POSITION",
                     new int[]{mScrollView.getScrollX(), mScrollView.getScrollY()});
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putIntArray("layouts_visibility",
                 new int[]{getVisibility(R.id.openingView), getVisibility(R.id.questionsView)});
         // saving the isSumbited value
-        outState.putBoolean("isSubmited",isSumbited);
+        outState.putBoolean("isSubmited", isSumbited);
     }
 
     @Override
@@ -103,24 +105,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Verify that editText views are taken out of focus and the keyboard is closed when the user touches outside of the view
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         View view = getCurrentFocus();
         if (view != null && (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_MOVE) && view instanceof EditText && !view.getClass().getName().startsWith("android.webkit.")) {
-            int scrcoords[] = new int[2];
-            view.getLocationOnScreen(scrcoords);
-            float x = ev.getRawX() + view.getLeft() - scrcoords[0];
-            float y = ev.getRawY() + view.getTop() - scrcoords[1];
+            int viewCoord[] = new int[2];
+            view.getLocationOnScreen(viewCoord);
+            float x = ev.getRawX() + view.getLeft() - viewCoord[0];
+            float y = ev.getRawY() + view.getTop() - viewCoord[1];
             if (x < view.getLeft() || x > view.getRight() || y < view.getTop() || y > view.getBottom())
-                ((InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow((this.getWindow().getDecorView().getApplicationWindowToken()), 0);
+                ((InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow((this.getWindow().getDecorView().getApplicationWindowToken()), 0);
             view.clearFocus();
         }
         return super.dispatchTouchEvent(ev);
     }
-
-    // Options for the intersex identity type question
-    private static final String[] identityTypes = new String[]{
-            "Gender", "Sexual"};
 
     /**
      * showing the questions and flags linearLayout instead of the opening view
@@ -146,13 +145,14 @@ public class MainActivity extends AppCompatActivity {
         // Device message according to score
         String message = "";
         if (score == 7) {
-            message = "Excellent job " + name + "!";
+            message = getResources().getString(R.string.message_perfect_score) + " " + name + "!";
         } else if (score >= 5) {
-            message = "Nice job " + name + ", but there's still room for improvement.";
+            message = getResources().getString(R.string.message_decent_score) + " " + name + ".";
         } else {
-            message = "You better brush up on your LGBT flags " + name + ".";
+            message = getResources().getString(R.string.message_bad_score) + " " + name + ".";
         }
-        Toast.makeText(this, message + "\nYou got " + score + "/7 answers right.", Toast.LENGTH_LONG).show();
+        message += "\n" + getResources().getString(R.string.score_report1) + " " + score + getResources().getString(R.string.score_report2);
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         // scroll to the top of the scrollView
         ScrollView scrollView = (ScrollView) findViewById(R.id.questionsView);
         scrollView.scrollTo(0, 0);
@@ -161,9 +161,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * This method calculates the user's score
      */
-    public int goOverAnswers(){
+    public int goOverAnswers() {
         int score = 0;
         // Check radioBox questions
         for (int i = 0; i <= 4; i++) {
@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
         // Check the intersex autoCompleteText question and lock it from further changes
         EditText intersexAns = (EditText) findViewById(R.id.intersex_ans);
         String userAns = intersexAns.getText().toString().toLowerCase();
-        if (userAns.contains("gender")) {
+        if (userAns.contains(getResources().getString(R.string.intersex_flag_a1).toLowerCase())) {
             score += 1;
             intersexAns.setTextColor(getResources().getColor(R.color.correctAns));
         } else {
@@ -232,7 +232,6 @@ public class MainActivity extends AppCompatActivity {
                 RadioButton chosenAns = (RadioButton) findViewById(checkedRadioButtonId);
                 stainBottun(R.color.colorAccent, chosenAns);
             }
-
             RadioGroup radioGroup = (RadioGroup) findViewById(radioGroupIdArray[i]);
             radioGroup.clearCheck();
         }
@@ -246,7 +245,6 @@ public class MainActivity extends AppCompatActivity {
         setVisibility(R.id.questionsView, View.GONE);
         // Change the isSubmited variable to false
         isSumbited = false;
-
     }
 
     /**
@@ -279,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Turns on/off the visibility of a text view
      *
-     * @param viewID is the R.id.textViewId
+     * @param viewID     is the R.id.textViewId
      * @param visibility should either be View.VISIBLE or View.GONE
      */
     public void setVisibility(int viewID, int visibility) {
@@ -342,7 +340,6 @@ public class MainActivity extends AppCompatActivity {
         stainBottun(colorResource, R.color.compoundButtonsDefault, compoundButton);
     }
 
-
     /**
      * For unchecked radioBox: Makes a new ColorStateList for tint and sets the button tint with it.
      * Uses the textDefault color as the color for uncheked button state when not mentioned otherwise.
@@ -378,7 +375,3 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-
-
-
-

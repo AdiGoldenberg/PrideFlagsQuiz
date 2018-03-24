@@ -36,6 +36,8 @@
     <string name="poly_definition">This is the polyamory flag. Polyamory is the practice of, desire to, or orientation towards having ethically, honest, and consensual non-monogamous relationships (i.e. relationships that may include multiple partners).  This may include open relationships, polyfidelity (which involves more than two people being in romantic and/or sexual relationships which is not open to additional partners), amongst many other set-ups.</string>
     <string name="intersex_flag_q">Does this flag represent a sexual identity or a gender identity?</string>
     <string name="intersex_text_entry_hint">Enter "gender" or "sexual"</string>
+    <string name="intersex_flag_a1">Gender</string>
+    <string name="intersex_flag_a2">Sexual</string>
     <string name="intersex_definition">This is the intersex flag. Intersex people are individuals with a combination of chromosomes, gonads, hormones, internal sex organs, and genitals that differs from the two expected patterns of male or female. As it is a biological based attribute determined at birth, it is a sexual identity, unlike gender identities which are determined by the way a person defines him/her-self.</string>
     <string name="trans_flag_q">Who\'s flag is this?</string>
     <string name="trans_flag_a1">Polysexuals</string>
@@ -45,4 +47,9 @@
     <string name="trans_definition">This is the transgenders flag. Transgenrs are individuals who live as a member of a gender other than that assigned at birth based on anatomical sex. A transgender man for example is a man born female. Note that this is a gender identity and doesn\'t imply on the person\'s sexual attraction. Often referred to as trans* as an indication of including non-binary genders.</string>
     <string name="submit_button_text">Submit answers</string>
     <string name="restart_button_text">Restart</string>
+    <string name="message_perfect_score">Excellent job </string>
+    <string name="message_decent_score">Nice job, but there\'s still room for improvement </string>
+    <string name="message_bad_score">You better brush up on your LGBT flags </string>
+    <string name="score_report1">You got </string>
+    <string name="score_report2">/7 answers right.</string>
 </resources>

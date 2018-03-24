@@ -21,11 +21,8 @@
 
         <!-- Pre-quiz view -->
         <ImageView
-            android:layout_width="0dp"
+            style="@style/flagImageLand"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/margin_between_answers"
-            android:layout_weight="1"
-            android:scaleType="fitXY"
             android:src="@drawable/lgbtflag" />
 
         <RelativeLayout
@@ -36,24 +33,19 @@
 
             <EditText
                 android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/question"
                 android:layout_centerVertical="true"
                 android:hint="@string/name_text_entry_hint"
-                android:inputType="textCapWords"
-                android:textSize="@dimen/questions_text_size" />
+                android:inputType="textCapWords" />
 
             <Button
                 android:id="@+id/startQuiz"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/button"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/margin_between_answers"
-                android:background="@drawable/button_background"
                 android:onClick="startQuiz"
                 android:text="@string/starting_instructions_text"
-                android:textSize="@dimen/questions_text_size" />
+                android:textSize="@dimen/questions_text_size"/>
         </RelativeLayout>
     </LinearLayout>
 
@@ -72,18 +64,13 @@
 
             <!--Asexual question -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/layout_background"
-                android:orientation="vertical"
-                android:id="@+id/asexualLayout">
+                android:id="@+id/asexualLayout"
+                style="@style/questionLayout"
+                android:layout_marginTop="0dp">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/asexual_flag_q"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/questions_text_size" />
+                    style="@style/questionLand"
+                    android:text="@string/asexual_flag_q" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -91,11 +78,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/question_image_height"
-                        android:layout_marginTop="@dimen/margin_between_answers"
-                        android:layout_weight="1"
-                        android:scaleType="fitXY"
+                        style="@style/flagImageLand"
                         android:src="@drawable/asexualflag" />
 
                     <RelativeLayout
@@ -111,68 +94,43 @@
                             android:layout_centerVertical="true">
 
                             <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/asexual_flag_a1"
-                                android:textSize="@dimen/answers_text_size"
-                                android:id="@+id/asexual_a1"/>
+                                android:id="@+id/asexual_a1"
+                                style="@style/answer"
+                                android:text="@string/asexual_flag_a1"/>
 
                             <RadioButton
                                 android:id="@+id/asexual_ans"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/asexual_flag_a2"
-                                android:textSize="@dimen/answers_text_size" />
+                                style="@style/answer"
+                                android:text="@string/asexual_flag_a2" />
 
                             <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/asexual_flag_a3"
-                                android:textSize="@dimen/answers_text_size"
-                                android:id="@+id/asexual_a3"/>
+                                android:id="@+id/asexual_a3"
+                                style="@style/answer"
+                                android:text="@string/asexual_flag_a3"/>
 
                             <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/asexual_flag_a4"
-                                android:textSize="@dimen/answers_text_size"
-                                android:id="@+id/asexual_a4"/>
+                                android:id="@+id/asexual_a4"
+                                style="@style/answer"
+                                android:text="@string/asexual_flag_a4"/>
                         </RadioGroup>
                     </RelativeLayout>
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/asexual_definition"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_between_answers"
-                    android:text="@string/asexual_definition"
-                    android:textColor="@color/definitionsText"
-                    android:textSize="@dimen/answers_text_size"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    style="@style/definition"
+                    android:text="@string/asexual_definition" />
             </LinearLayout>
 
 
             <!--Genderqueer question -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_between_questions"
-                android:background="@drawable/layout_background"
-                android:orientation="vertical"
-                android:id="@+id/genderqueerLayout">
+                android:id="@+id/genderqueerLayout"
+                style="@style/questionLayout">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/genderqueer_flag_q"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/questions_text_size" />
+                    style="@style/questionLand"
+                    android:text="@string/genderqueer_flag_q" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -180,11 +138,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/question_image_height"
-                        android:layout_marginTop="@dimen/margin_between_answers"
-                        android:layout_weight="1"
-                        android:scaleType="fitXY"
+                        style="@style/flagImageLand"
                         android:src="@drawable/genderqueerflag" />
 
                     <RelativeLayout
@@ -200,66 +154,42 @@
                             android:layout_centerVertical="true">
 
                             <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/genderqueer_flag_a1"
-                                android:textSize="@dimen/answers_text_size"
-                                android:id="@+id/genderqueer_a1"/>
+                                android:id="@+id/genderqueer_a1"
+                                style="@style/answer"
+                                android:text="@string/genderqueer_flag_a1"/>
 
                             <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/genderqueer_flag_a2"
-                                android:textSize="@dimen/answers_text_size"
-                                android:id="@+id/genderqueer_a2"/>
+                                android:id="@+id/genderqueer_a2"
+                                style="@style/answer"
+                                android:text="@string/genderqueer_flag_a2"/>
 
                             <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/genderqueer_flag_a3"
-                                android:textSize="@dimen/answers_text_size"
-                                android:id="@+id/genderqueer_a3"/>
+                                android:id="@+id/genderqueer_a3"
+                                style="@style/answer"
+                                android:text="@string/genderqueer_flag_a3"/>
 
                             <RadioButton
                                 android:id="@+id/genderqueer_ans"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/genderqueer_flag_a4"
-                                android:textSize="@dimen/answers_text_size" />
+                                style="@style/answer"
+                                android:text="@string/genderqueer_flag_a4" />
                         </RadioGroup>
                     </RelativeLayout>
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/genderqueer_definition"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_between_answers"
-                    android:text="@string/genderqueer_definition"
-                    android:textColor="@color/definitionsText"
-                    android:textSize="@dimen/answers_text_size"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    style="@style/definition"
+                    android:text="@string/genderqueer_definition" />
             </LinearLayout>
 
             <!--Intersex question -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_between_questions"
-                android:background="@drawable/layout_background"
-                android:orientation="vertical"
-                android:id="@+id/intersexLayout">
+                android:id="@+id/intersexLayout"
+                style="@style/questionLayout">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/questionLand"
                     android:text="@string/intersex_flag_q"
-                    android:textAlignment="center"
                     android:textSize="@dimen/questions_text_size" />
 
                 <LinearLayout
@@ -268,11 +198,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/question_image_height"
-                        android:layout_marginTop="@dimen/margin_between_answers"
-                        android:layout_weight="1"
-                        android:scaleType="fitXY"
+                        style="@style/flagImageLand"
                         android:src="@drawable/intersexflag" />
 
                     <RelativeLayout
@@ -283,11 +209,9 @@
 
                         <AutoCompleteTextView
                             android:id="@+id/intersex_ans"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/intersex_text_entry_hint"
-                            android:textSize="@dimen/answers_text_size"
+                            style="@style/answer"
                             android:layout_centerVertical="true"
+                            android:hint="@string/intersex_text_entry_hint"
                             android:imeOptions="actionDone"
                             android:inputType="textCapWords"/>
                     </RelativeLayout>
@@ -295,31 +219,18 @@
 
                 <TextView
                     android:id="@+id/intersex_definition"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_between_answers"
-                    android:text="@string/intersex_definition"
-                    android:textColor="@color/definitionsText"
-                    android:textSize="@dimen/answers_text_size"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    style="@style/definition"
+                    android:text="@string/intersex_definition" />
             </LinearLayout>
 
             <!--Bisexual question -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_between_questions"
-                android:background="@drawable/layout_background"
-                android:orientation="vertical"
-                android:id="@+id/bisexualLayout">
+                android:id="@+id/bisexualLayout"
+                style="@style/questionLayout">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/bisexual_flag_q"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/questions_text_size" />
+                    style="@style/questionLand"
+                    android:text="@string/bisexual_flag_q" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -327,11 +238,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/question_image_height"
-                        android:layout_marginTop="@dimen/margin_between_answers"
-                        android:layout_weight="1"
-                        android:scaleType="fitXY"
+                        style="@style/flagImageLand"
                         android:src="@drawable/bisexualflag" />
 
                     <RelativeLayout
@@ -348,66 +255,41 @@
 
                             <RadioButton
                                 android:id="@+id/bisexual_ans"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/bisexual_flag_a1"
-                                android:textSize="@dimen/answers_text_size" />
+                                style="@style/answer"
+                                android:text="@string/bisexual_flag_a1" />
 
                             <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/bisexual_flag_a2"
-                                android:textSize="@dimen/answers_text_size"
-                                android:id="@+id/bisexual_a2"/>
+                                android:id="@+id/bisexual_a2"
+                                style="@style/answer"
+                                android:text="@string/bisexual_flag_a2"/>
 
                             <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/bisexual_flag_a3"
-                                android:textSize="@dimen/answers_text_size"
-                                android:id="@+id/bisexual_a3"/>
+                               android:id="@+id/bisexual_a3"
+                                style="@style/answer"
+                                android:text="@string/bisexual_flag_a3"/>
 
                             <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/bisexual_flag_a4"
-                                android:textSize="@dimen/answers_text_size"
-                                android:id="@+id/bisexual_a4"/>
+                                android:id="@+id/bisexual_a4"
+                                style="@style/answer"
+                                android:text="@string/bisexual_flag_a4"/>
                         </RadioGroup>
                     </RelativeLayout>
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/bisexual_definition"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_between_answers"
-                    android:text="@string/bisexual_definition"
-                    android:textColor="@color/definitionsText"
-                    android:textSize="@dimen/answers_text_size"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    style="@style/definition"
+                    android:text="@string/bisexual_definition" />
             </LinearLayout>
 
             <!--Transgender question -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_between_questions"
-                android:background="@drawable/layout_background"
-                android:orientation="vertical"
-                android:id="@+id/transLayout">
+                android:id="@+id/transLayout"
+                style="@style/questionLayout">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/trans_flag_q"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/questions_text_size" />
+                    style="@style/questionLand"
+                    android:text="@string/trans_flag_q" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -415,11 +297,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/question_image_height"
-                        android:layout_marginTop="@dimen/margin_between_answers"
-                        android:layout_weight="1"
-                        android:scaleType="fitXY"
+                        style="@style/flagImageLand"
                         android:src="@drawable/transflag" />
 
                     <RelativeLayout
@@ -435,67 +313,42 @@
                             android:layout_centerVertical="true">
 
                             <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/trans_flag_a1"
-                                android:textSize="@dimen/answers_text_size"
-                                android:id="@+id/trans_a1"/>
+                                android:id="@+id/trans_a1"
+                                style="@style/answer"
+                                android:text="@string/trans_flag_a1"/>
 
                             <RadioButton
                                 android:id="@+id/trans_ans"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/trans_flag_a2"
-                                android:textSize="@dimen/answers_text_size" />
+                                style="@style/answer"
+                                android:text="@string/trans_flag_a2" />
 
                             <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/trans_flag_a3"
-                                android:textSize="@dimen/answers_text_size"
-                                android:id="@+id/trans_a3"/>
+                                android:id="@+id/trans_a3"
+                                style="@style/answer"
+                                android:text="@string/trans_flag_a3"/>
 
                             <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/trans_flag_a4"
-                                android:textSize="@dimen/answers_text_size"
-                                android:id="@+id/trans_a4"/>
+                                android:id="@+id/trans_a4"
+                                style="@style/answer"
+                                android:text="@string/trans_flag_a4"/>
                         </RadioGroup>
                     </RelativeLayout>
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/trans_definition"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_between_answers"
-                    android:text="@string/trans_definition"
-                    android:textColor="@color/definitionsText"
-                    android:textSize="@dimen/answers_text_size"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    style="@style/definition"
+                    android:text="@string/trans_definition" />
             </LinearLayout>
 
             <!-- Rainbow flag question -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_between_questions"
-                android:background="@drawable/layout_background"
-                android:orientation="vertical"
-                android:id="@+id/rainbowLayout">
+                android:id="@+id/rainbowLayout"
+                style="@style/questionLayout">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rainbow_flag_q"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/questions_text_size" />
+                    style="@style/question"
+                    android:text="@string/rainbow_flag_q" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -503,11 +356,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/question_image_height"
-                        android:layout_marginTop="@dimen/margin_between_answers"
-                        android:layout_weight="1"
-                        android:scaleType="fitXY"
+                        style="@style/flagImageLand"
                         android:src="@drawable/rainbowflag" />
 
                     <RelativeLayout
@@ -524,87 +373,51 @@
 
                             <CheckBox
                                 android:id="@+id/rainbow_ans1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="@dimen/margin_between_answers"
-                                android:text="@string/rainbow_flag_a1"
-                                android:textSize="@dimen/answers_text_size" />
+                                style="@style/checkboxLand"
+                                android:text="@string/rainbow_flag_a1"/>
 
                             <CheckBox
                                 android:id="@+id/rainbow_ans2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_checkboxs_land"
-                                android:paddingLeft="@dimen/margin_between_answers"
-                                android:text="@string/rainbow_flag_a2"
-                                android:textSize="@dimen/answers_text_size" />
+                                style="@style/checkboxLand"
+                                android:text="@string/rainbow_flag_a2" />
 
                             <CheckBox
                                 android:id="@+id/rainbow_ans3"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_checkboxs_land"
-                                android:paddingLeft="@dimen/margin_between_answers"
-                                android:text="@string/rainbow_flag_a3"
-                                android:textSize="@dimen/answers_text_size" />
+                                style="@style/checkboxLand"
+                                android:text="@string/rainbow_flag_a3" />
 
                             <CheckBox
                                 android:id="@+id/rainbow_ans4"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_checkboxs_land"
-                                android:paddingLeft="@dimen/margin_between_answers"
-                                android:text="@string/rainbow_flag_a4"
-                                android:textSize="@dimen/answers_text_size" />
+                                style="@style/checkboxLand"
+                                android:text="@string/rainbow_flag_a4" />
 
                             <CheckBox
                                 android:id="@+id/rainbow_ans5"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_checkboxs_land"
-                                android:paddingLeft="@dimen/margin_between_answers"
-                                android:text="@string/rainbow_flag_a5"
-                                android:textSize="@dimen/answers_text_size" />
+                                style="@style/checkboxLand"
+                                android:text="@string/rainbow_flag_a5" />
 
                             <CheckBox
                                 android:id="@+id/rainbow_ans6"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_checkboxs_land"
-                                android:paddingLeft="@dimen/margin_between_answers"
-                                android:text="@string/rainbow_flag_a6"
-                                android:textSize="@dimen/answers_text_size" />
+                                style="@style/checkboxLand"
+                                android:text="@string/rainbow_flag_a6" />
                         </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/rainbow_definition"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_between_answers"
-                    android:text="@string/rainbow_definition"
-                    android:textColor="@color/definitionsText"
-                    android:textSize="@dimen/answers_text_size"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    style="@style/definition"
+                    android:text="@string/rainbow_definition" />
             </LinearLayout>
 
             <!--Polyamory question -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_between_questions"
-                android:background="@drawable/layout_background"
-                android:orientation="vertical"
-                android:id="@+id/polyLayout">
+                android:id="@+id/polyLayout"
+                style="@style/questionLayout">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/poly_flag_q"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/questions_text_size" />
+                    style="@style/questionLand"
+                    android:text="@string/poly_flag_q" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -612,11 +425,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/question_image_height"
-                        android:layout_marginTop="@dimen/margin_between_answers"
-                        android:layout_weight="1"
-                        android:scaleType="fitXY"
+                        style="@style/flagImageLand"
                         android:src="@drawable/polyamoryflag" />
 
                     <RelativeLayout
@@ -632,69 +441,45 @@
                             android:layout_centerVertical="true">
 
                             <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/poly_flag_a1"
-                                android:textSize="@dimen/answers_text_size"
-                                android:id="@+id/poly_a1"/>
+                                android:id="@+id/poly_a1"
+                                style="@style/answer"
+                                android:text="@string/poly_flag_a1"/>
 
                             <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/poly_flag_a2"
-                                android:textSize="@dimen/answers_text_size"
-                                android:id="@+id/poly_a2"/>
+                                android:id="@+id/poly_a2"
+                                style="@style/answer"
+                                android:text="@string/poly_flag_a2"/>
 
                             <RadioButton
                                 android:id="@+id/poly_ans"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/poly_flag_a3"
-                                android:textSize="@dimen/answers_text_size" />
+                                style="@style/answer"
+                                android:text="@string/poly_flag_a3" />
 
                             <RadioButton
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_between_answers"
-                                android:text="@string/poly_flag_a4"
-                                android:textSize="@dimen/answers_text_size"
-                                android:id="@+id/poly_a4"/>
+                                android:id="@+id/poly_a4"
+                                style="@style/answer"
+                                android:text="@string/poly_flag_a4"/>
                         </RadioGroup>
                     </RelativeLayout>
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/poly_definition"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_between_answers"
-                    android:text="@string/poly_definition"
-                    android:textColor="@color/definitionsText"
-                    android:textSize="@dimen/answers_text_size"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    style="@style/definition"
+                    android:text="@string/poly_definition" />
             </LinearLayout>
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/button"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin_between_answers"
-                android:background="@drawable/button_background"
                 android:onClick="checkAnswers"
-                android:text="@string/submit_button_text" />
+                android:text="@string/submit_button_text"/>
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/button"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin_between_answers"
-                android:background="@drawable/button_background"
                 android:onClick="reset"
-                android:text="@string/restart_button_text" />
+                android:text="@string/restart_button_text"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

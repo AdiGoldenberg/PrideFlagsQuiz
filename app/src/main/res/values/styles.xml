@@ -7,7 +7,74 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/textDefault</item>
+    </style>
 
+    <style name="definition">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin_between_answers</item>
+        <item name="android:textColor">@color/definitionsText</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/answers_text_size</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin_between_answers</item>
+        <item name="android:background">@drawable/button_background</item>
+    </style>
+
+    <style name="questionLayout">
+        <item name="android:background">@drawable/layout_background</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_marginTop">@dimen/margin_between_questions</item>
+    </style>
+
+    <style name="question">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/questions_text_size</item>
+    </style>
+
+    <style name="questionLand">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/questions_text_size</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="flagImage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/question_image_height</item>
+        <item name="android:layout_marginTop">@dimen/margin_between_answers</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
+    <style name="flagImageLand">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/question_image_height</item>
+        <item name="android:layout_marginTop">@dimen/margin_between_answers</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="answer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin_between_answers</item>
+        <item name="android:textSize">@dimen/answers_text_size</item>
+    </style>
+
+    <style name="checkboxLand">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin_between_checkboxs_land</item>
+        <item name="android:textSize">@dimen/answers_text_size</item>
+        <item name="android:paddingLeft">@dimen/padding_checkbox_left</item>
     </style>
 
 </resources>
